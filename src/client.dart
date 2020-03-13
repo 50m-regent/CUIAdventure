@@ -10,7 +10,11 @@ void runGame() {
   while (true) {
     final String _cmd = waitCommand();
 
-    if (_cmd == 'stats') player.viewStats();
+    if (_cmd == 'help') Message.commands();
+
+    else if (_cmd == 'stats') player.viewStats();
+
+    else if (_cmd == 'inventory' || _cmd == 'inv') player.viewInventory();
 
     else if (_cmd == 'exit') break;
 

@@ -1,14 +1,69 @@
 class Item {
-  final String name;
+  final String name, lore;
 
   const Item({
     String this.name,
+    String this.lore,
   });
-  const Item.none({String this.name = 'NONE'});
+  const Item.none({
+    String this.name = 'NONE',
+    String this.lore = ''
+  });
+
+  void view() {
+    print('${this.name} -${this.lore}');
+  }
+}
+
+class Rod extends Item {
+  final int durability;
+
+  const Rod({
+    String name,
+    String lore,
+    int this.durability,
+  }) : super(
+    name: name,
+    lore: lore,
+  );
+
+  @override
+  void view() {
+    super.view();
+    print('  Durability: ${this.durability}');
+  }
+}
+
+class Bait extends Item {
+  int amount;
+
+  Bait({
+    String name,
+    String lore,
+    int this.amount,
+  }) : super(
+    name: name,
+    lore: lore,
+  );
+
+  @override
+  void view() {
+    super.view();
+    print('  Amount: ${this.amount}');
+  }
 }
 
 abstract class Items {
-  static const Item rod = Item(name: 'Normal Rod');
+  static const Rod normalRod = Rod(
+    name      : 'Normal Rod',
+    lore      : 'The first, the best.',
+    durability: 10,
+  );
+  static final Bait normalBait = Bait(
+    name  : "Normal Bait",
+    lore  : 'Better than nothing.',
+    amount: 10,
+  );
 }
 
 class Equip {

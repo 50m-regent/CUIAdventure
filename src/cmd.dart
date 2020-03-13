@@ -3,7 +3,7 @@ import 'dart:io';
 import 'msg.dart';
 
 String waitCommand() {
-  Message.command();
+  Message.waitCommand();
 
   final String _cmd = stdin.readLineSync();
 
