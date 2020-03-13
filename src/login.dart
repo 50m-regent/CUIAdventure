@@ -1,13 +1,18 @@
 import 'dart:io';
 
 import 'msg.dart';
+import 'player.dart';
 
-void login() {
+Player login() {
   Message.getID();
   final String _id = stdin.readLineSync();
 
-  Message.getPass();
-  final String _pass = stdin.readLineSync();
-
   Message.loginComplete();
+
+  Player player;
+
+  if (_id == 'NEW') player = Player.initial();
+  else player = Player.fromID(_id);
+
+  return player;
 }
